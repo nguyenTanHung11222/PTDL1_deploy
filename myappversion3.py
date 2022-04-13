@@ -1,4 +1,5 @@
 from dash import Dash, html, dcc, Input,Output
+from grpc import server
 import numpy as np
 import plotly.express as px
 import pandas as pd
@@ -26,6 +27,7 @@ data["QTR_ID"] = data["QTR_ID"].astype("str")
 
 # TRỰC QUAN HÓA DỮ LIỆU WEB APP
 app = Dash(__name__)
+server = app.server
 
 figSoLuongSanPham = px.bar(data, x="YEAR_ID", y="SumProductQTRYEAR", 
 barmode="group", color="QTR_ID", title='Tổng số lượng sản phẩm theo quý và năm',
